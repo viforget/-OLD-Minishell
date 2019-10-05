@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   putpromp.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/05 14:33:31 by viforget          #+#    #+#             */
+/*   Updated: 2019/10/05 14:34:24 by viforget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-char	*smiley[] = 
+char	*g_smiley[] =
 {
 	"(^_^)",
 	"(◕‿◕✿)",
-	"(⊙_☉)",
+	"(⊙_☉ )",
 	"¯\\_(ツ)_/¯",
 	"( ˘ ³˘)♥",
 	"ಠᴗಠ",
@@ -26,7 +38,7 @@ char	*smiley[] =
 	"ヽ(。_°)ノ",
 	"꒰⑅•ᴗ•⑅ ꒱",
 	"(ʘ ᗝ ʘ)",
-	"👻",
+	"👻 ",
 	"♥‿♥",
 	"ʕᵔᴥᵔʔ",
 };
@@ -36,7 +48,7 @@ int		findlastslash(char *str)
 	int i;
 
 	i = ft_strlen(str);
-	while(str[i] != '/' && i > 0)
+	while (str[i] != '/' && i > 0)
 		i--;
 	return (i);
 }
@@ -46,9 +58,9 @@ void	putprompt(char **env)
 	static int n = 0;
 
 	ft_putstr("\033[31m\033[1m");
-	ft_putstr(smiley[n]);
+	ft_putstr(g_smiley[n]);
 	ft_putstr(" \033[0m\033[32m\033[1m");
-	ft_putstr(env[7] + findlastslash(env[7] - 1));
+	ft_putstr(env[7] + findlastslash(env[7]) + 1);
 	ft_putstr("\033[0m\033[1m\033[34m ➔ \033[0m");
 	n++;
 	if (n > 26)
