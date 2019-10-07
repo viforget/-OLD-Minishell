@@ -18,8 +18,11 @@ int 	checkenvname(char *str)
 
 	i = 0;
 	while(str[i])
-		if (!(str[0] == '_' || ft_isalpha(str[i]) == 1))
+	{
+		if (!(str[i] == '_' || ft_isalpha(str[i]) == 1))
 			return (0);
+		i++;
+	}
 	return (1);
 }
 
@@ -36,12 +39,12 @@ char	**addlineenv(char **env, char *str)
 	env2 = ft_memalloc(sizeof(char *) * i + 2);
 	env2[i + 1] = NULL;
 	env2[i] = str;
-	while(i >= 0)
+	while(i > 0)
 	{
-		env2[i] = env[i];
 		i--;
+		env2[i] = env[i];
 	}
-	ft_tabdel(env, j);
+	free(env);
 	return(env2);
 }
 

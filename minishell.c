@@ -48,7 +48,7 @@ char	**read_split(char c)
 	return (av);
 }
 
-int		built_in(char **av)
+int		built_in(char **av, char **env)
 {
 	if (ft_strcmp(av[0], "cd") == 0)
 		gocd(av[1], env);
@@ -76,7 +76,7 @@ int		main(int ac, char **av, char **env)
 	{
 		putprompt(env);
 		av = read_split(' ');
-		else
+		if (built_in(av, env) == 0)
 		{
 			i = fork();
 			if (i == 0 && ac)

@@ -27,7 +27,8 @@ void	binex(char **av, char *pat)
 		i++;
 	}
 	free(path);
-	ft_putstr("minishell: command not found: ");
+	if (av[0][0])
+		ft_putstr("minishell: command not found: ");
 	ft_putendl(av[0]);
 	exit(0);
 }
