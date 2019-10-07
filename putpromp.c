@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:33:31 by viforget          #+#    #+#             */
-/*   Updated: 2019/10/05 14:34:24 by viforget         ###   ########.fr       */
+/*   Updated: 2019/10/06 11:53:49 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*g_smiley[] =
 	"ʕᵔᴥᵔʔ",
 };
 
-int		findlastslash(char *str)
+int		findsl(char *str)
 {
 	int i;
 
@@ -60,7 +60,7 @@ void	putprompt(char **env)
 	ft_putstr("\033[31m\033[1m");
 	ft_putstr(g_smiley[n]);
 	ft_putstr(" \033[0m\033[32m\033[1m");
-	ft_putstr(env[7] + findlastslash(env[7]) + 1);
+	ft_putstr(env[loc_env(env, "PWD=")] + findsl(env[loc_env(env, "PWD=")]) + 1);
 	ft_putstr("\033[0m\033[1m\033[34m ➔ \033[0m");
 	n++;
 	if (n > 26)
