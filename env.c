@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 12:19:34 by viforget          #+#    #+#             */
-/*   Updated: 2019/10/06 14:32:30 by viforget         ###   ########.fr       */
+/*   Updated: 2019/10/08 06:49:36 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**addlineenv(char **env, char *str)
 	return(env2);
 }
 
-void	ft_setenv(char **env, char *name, char *content)
+char	**ft_setenv(char **env, char *name, char *content)
 {
 	char *str;
 
@@ -61,6 +61,7 @@ void	ft_setenv(char **env, char *name, char *content)
 	}
 	else 
 		ft_putendl(ERROR_SETENV);
+	return (env);
 }
 
 int		loc_env(char **env, char *str)

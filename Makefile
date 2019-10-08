@@ -6,7 +6,7 @@
 #    By: viforget <viforget@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/05 10:48:32 by viforget          #+#    #+#              #
-#    Updated: 2019/10/06 14:19:28 by viforget         ###   ########.fr        #
+#    Updated: 2019/10/08 08:10:56 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS += -Werror -Wall -Wextra -I includes
 LIBDIR = libft
 
-SRC = minishell.c putpromp.c env.c command.c
+SRC = minishell.c putpromp.c env.c command.c unsetenv.c
 
 O_FILES = $(SRC:%.c=%.o)
 	FLAGLIB = -L$(LIBDIR) -lft

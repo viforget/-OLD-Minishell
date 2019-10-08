@@ -6,7 +6,7 @@
 /*   By: viforget <viforget@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 11:51:54 by viforget          #+#    #+#             */
-/*   Updated: 2019/10/06 14:34:44 by viforget         ###   ########.fr       */
+/*   Updated: 2019/10/08 08:19:34 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ char	**read_split(char c)
 	return (av);
 }
 
-int		built_in(char **av, char **env)
+int		built_in(char **av, char ***env)
 {
 	if (ft_strcmp(av[0], "cd") == 0)
-		gocd(av[1], env);
+		gocd(av[1], *env);
 	else if (ft_strcmp(av[0], "env") == 0)
-		goenv(env);
+		goenv(*env);
 	else if (ft_strcmp(av[0], "setenv") == 0)
-		ft_setenv(env, av[1], av[2]);
-	/*else if (ft_strcmp(av[0], "unsetenv") == 0)
-		gousenv(env);
-	else if (ft_strcmp(av[0], "echo") == 0)
+		*env = ft_setenv(*env, av[1], av[2]);
+	else if (ft_strcmp(av[0], "unsetenv") == 0)
+		ft_unsetenv(env, av + 1);
+	/*else if (ft_strcmp(av[0], "echo") == 0)
 		goecho(env);*/
 	else
 		return (0);
@@ -76,7 +76,7 @@ int		main(int ac, char **av, char **env)
 	{
 		putprompt(env);
 		av = read_split(' ');
-		if (built_in(av, env) == 0)
+		if (built_in(av, &env) == 0)
 		{
 			i = fork();
 			if (i == 0 && ac)
